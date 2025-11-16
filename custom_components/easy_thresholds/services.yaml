@@ -1,0 +1,9 @@
+clear_alarm:
+  name: service.easy_thresholds.clear_alarm.name
+  description: service.easy_thresholds.clear_alarm.description
+  fields:
+    alarm_name:
+      name: service.easy_thresholds.clear_alarm.fields.alarm_name.name
+      description: service.easy_thresholds.clear_alarm.fields.alarm_name.description
+      selector:
+        text:

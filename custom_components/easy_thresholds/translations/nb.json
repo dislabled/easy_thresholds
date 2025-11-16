@@ -1,0 +1,50 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konfigurering av terskelgrenser",
+        "description": "Konfigurer alarmterskler for overvåking av sensorer",
+        "data": {
+          "sensor_entity": "Sensor enhet",
+          "s_minus_minus": "s-- (Kritisk lav) - Terskel under advarsel lav",
+          "s_minus": "s- (Advarsel lav) - Normalområde begynner her",
+          "s_plus": "s+ (Advarsel høy) - Normalområde slutter her",
+          "s_plus_plus": "s++ (Kritisk høy) - Terskel over advarsel høy",
+          "active_thresholds": "Aktive terskelnivåer",
+          "resolution_mode": "Klareringsmodus"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Terskelene må være i orden: s-- < s- < s+ < s++"
+    }
+  },
+  "selector": {
+    "resolution_mode": {
+      "options": {
+        "automatic": "Automatisk (alarm blir klarert når sensoren vender tilbake til normalområdet)",
+        "manual": "Manuell (alarm krever bekreftelse)"
+      }
+    },
+    "active_thresholds": {
+      "options": {
+        "s_minus_minus": "Kritisk lavt (s--)",
+        "s_minus": "Advarsel lavt (s-)",
+        "s_plus": "Advarsel høyt (s+)",
+        "s_plus_plus": "Kritisk høyt (s++)"
+      }
+    }
+  },
+  "services": {
+    "clear_alarm": {
+      "name": "Fjern Alarm",
+      "description": "Fjern manuelt en aktiv alarm",
+      "fields": {
+        "alarm_name": {
+          "name": "Alarmnavn",
+          "description": "Navnet på alarmen som skal fjernes"
+        }
+      }
+    }
+  }
+}

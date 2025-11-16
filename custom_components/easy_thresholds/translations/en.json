@@ -1,0 +1,50 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Easy Thresholds Configuration",
+        "description": "Configure alarm limits for monitoring sensors",
+        "data": {
+          "sensor_entity": "Sensor Entity",
+          "s_minus_minus": "s-- (Critical Low) - Threshold below warning low",
+          "s_minus": "s- (Warning Low) - Normal range starts here",
+          "s_plus": "s+ (Warning High) - Normal range ends here",
+          "s_plus_plus": "s++ (Critical High) - Threshold above warning high",
+          "active_thresholds": "Active Threshold Levels",
+          "resolution_mode": "Resolution Mode"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Thresholds must be in order: s-- < s- < s+ < s++"
+    }
+  },
+  "selector": {
+    "resolution_mode": {
+      "options": {
+        "automatic": "Automatic (alarm clears when sensor returns within normal range)",
+        "manual": "Manual (alarm requires acknowledgment)"
+      }
+    },
+    "active_thresholds": {
+      "options": {
+        "s_minus_minus": "Critical Low (s--)",
+        "s_minus": "Warning Low (s-)",
+        "s_plus": "Warning High (s+)",
+        "s_plus_plus": "Critical High (s++)"
+      }
+    }
+  },
+  "services": {
+    "clear_alarm": {
+      "name": "Clear Alarm",
+      "description": "Manually clear an active alarm",
+      "fields": {
+        "alarm_name": {
+          "name": "Alarm Name",
+          "description": "The name of the alarm to clear"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+name: Linting
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint homeassistant
+      - name: Run pylint
+        run: |
+          pylint custom_components/easy_thresholds --disable=all --enable=syntax-error,undefined-variable
+
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black
+      - name: Run black check
+        run: |
+          black --check custom_components/easy_thresholds
