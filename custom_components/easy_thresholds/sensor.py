@@ -128,9 +128,6 @@ class AlarmMonitorSensor(SensorEntity):
         if not entity_id:
             return
 
-        # Re-parse to check all latest entries
-        self._parse_config(self.config_entry.data)
-
         new_state = event.data.get("new_state")
         if new_state is None:
             return
