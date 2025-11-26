@@ -70,13 +70,15 @@ class AlarmMonitorSensor(SensorEntity):
 
     def _parse_config(self, config_data: Dict[str, Any]) -> None:
         """Parse configuration data from all entries."""
-        # Always collect sensors from all current config entries
         self._sensor_configs.clear()
         for entry in self.hass.config_entries.async_entries(DOMAIN):
             sensor_entity = entry.data.get("sensor_entity")
             if sensor_entity:
-                # Convert to dict to avoid MappingProxyType issues
-                self._sensor_configs[sensor_entity] = dict(entry.data)
+                # Merge data with options (options take precedence)
+                config = dict(entry.data)
+                if entry.options:
+                    config.update(entry.options)
+                self._sensor_configs[sensor_entity] = config
 
     async def async_added_to_hass(self) -> None:
         """Subscribe to sensor state changes and config entry updates."""
