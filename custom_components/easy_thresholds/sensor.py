@@ -365,5 +365,5 @@ class AlarmMonitorSensor(SensorEntity):
         """Clear an alarm by name."""
         self._clear_alarm_by_name(alarm_name)
         if alarm_name in self._last_notified_alarms:
-            self._last_notified_alarms.remove(alarm_name)
+            self._last_notified_alarms.discard(alarm_name)
         self.async_write_ha_state()
